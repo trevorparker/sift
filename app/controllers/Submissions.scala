@@ -20,7 +20,10 @@ object Submissions extends Controller {
 
   def index = Action { implicit request =>
     val submissions = Submission.all
-    Ok(Json.toJson(submissions))
+    render {
+      case Accepts.Html() => Ok(views.html.submissions.index(submissions))
+      case Accepts.Json() => Ok(Json.toJson(submissions))
+    }
   }
   def create = Action { implicit request =>
     submissionForm.bindFromRequest.fold(
