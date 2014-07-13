@@ -4,10 +4,17 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-10 col-sm-offset-1">
-        <h2>Current submissions</h2>
-          <ul>
+        <h2 class="h3">Current submissions</h2>
+          <div class="list-group">
             @for(submission <- submissions) {
-              <li><a href="@submission.url">@submission.title</a></li>
+              <a class="list-group-item" href="@submission.url">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h3 class="h4 list-group-item-heading">@submission.title</h3>
+                    <h4 class="h5 list-group-item-subheading text-muted">@submission.url</h4>
+                  </div>
+                </div>
+              </a>
             }
           </ul>
         </div>
